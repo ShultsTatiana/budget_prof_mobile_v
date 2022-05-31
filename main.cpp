@@ -98,17 +98,6 @@ bool AreSegmentsIntersected(IndexSegment lhs, IndexSegment rhs) {
 }
 
 
-
-
-constexpr uint8_t TAX_PERCENTAGE = 13;
-
-struct BulkTaxApplier {
-    double FACTOR = 1.0;
-
-    BulkTaxApplier(int _tax = 0) : FACTOR(1.0 - double(_tax) / 100.0) {
-    }
-};
-
 struct Money {
     using Data = double;
     Data earn;
@@ -128,6 +117,14 @@ struct Money {
     operator Data() const {
         return earn - spend;
     } 
+};
+
+
+struct BulkTaxApplier {
+    double FACTOR = 1.0;
+
+    BulkTaxApplier(int _tax = 0) : FACTOR(1.0 - double(_tax) / 100.0) {
+    }
 };
 
 struct BulkMoneyAdder {
